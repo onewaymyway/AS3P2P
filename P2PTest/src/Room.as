@@ -78,6 +78,7 @@ package
 				case "PLAYER_UPDATE":
 					opponents[e.message.sender].x = e.message.playerx;
 					opponents[e.message.sender].y = e.message.playery;
+					opponents[e.message.sender].resetColor(e.message.color);
 					break;
 			}
 		}
@@ -104,7 +105,7 @@ package
 			player.y = e.stageY;
 			
 			//update their view by sending a data object, you can send all kinds of data!
-			netgrouper.post( { action:"PLAYER_UPDATE", playerx:player.x, playery:player.y } );
+			netgrouper.post( { action:"PLAYER_UPDATE", playerx:player.x, playery:player.y ,color:player.myColor} );
 			//for real life you might want to post an update based on a timer or something a bit
 			//slower than mouse move or enter frame.
 		}
